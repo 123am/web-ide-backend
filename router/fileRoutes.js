@@ -9,6 +9,6 @@ router.post("/viewFile", fileController.viewFile);
 router.post("/createDirectory", fileController.createDirectory);
 router.post("/createFile", fileController.createFile);
 router.post("/saveFile", fileController.saveFile);
-router.post("/readmeFilePreview",upload.single('file'),fileController.saveFile);
+router.post("/readmeFilePreview",upload.single('file'),fileController.readmeFilePreview);
 
 module.exports = router;

@@ -164,6 +164,9 @@ class FileController {
     try {
 
       let a = []
+      if (!fss.existsSync(myPath)) {
+        fss.mkdirSync(myPath)
+      }
       let dte = await nestedFiler(myPath)
       res.json({
         "msg": "file",
@@ -184,6 +187,32 @@ class FileController {
 
 
   async saveFile(req, res, next) {
+    try {
+
+      console.log(req.body, "req.body.path,req.body.content")
+
+      fs.writeFile(req.body.path,req.body.content)
+
+      res.status(200).json({
+        "msg": "file",
+        "status": false,
+        "data": ""
+      })
+    }
+    catch (err) {
+      console.log(err)
+      res.status(400).json({
+        "msg": err.code,
+        "status": false,
+        "data": []
+      })
+
+    }
+  }
+
+
+  
+  async readmeFilePreview(req, res, next) {
     try {
 
       console.log(req.body, "req.body.path,req.body.content")
