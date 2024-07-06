@@ -13,8 +13,33 @@ class FileController {
   async creation(req, res, next) {
     try {
       console.log("dfghjkl")
-      // if (!fs.existsSync("dasd")) {
-      fs.mkdirSync("dasd//dasd")
+      // if (!fs.existsSync("netlifyApp")) {
+      fs.mkdirSync("/tmp/netlifyApp")
+      // }
+      res.json({
+        "msg": "file",
+        "status": false
+      })
+    }
+    catch (err) {
+
+      console.log(err)
+      // next(err)\
+      // if (err.code === 'EEXIST') { // curDir already exists!
+      //   return curDir;
+      // }
+      res.json({
+        "msg": err.code,
+        "status": false
+      })
+
+    }
+  }
+  async testing(req, res, next) {
+    try {
+      console.log("dfghjkl")
+      // if (!fs.existsSync("netlifyApp")) {
+      fs.mkdirSync("/tmp/netlifyApp")
       // }
       res.json({
         "msg": "file",
@@ -41,7 +66,7 @@ class FileController {
 
 
   async viewFile(req, res, next) {
-    let myPath = "dasd";
+    let myPath = "/tmp/netlifyApp";
     try {
 
 
@@ -79,7 +104,7 @@ class FileController {
       if (req.body.path) {
         fpath = req.body.path
       } else {
-        fpath = "dasd"
+        fpath = "/tmp/netlifyApp"
       }
 
       if (req.body.fName == "") {
@@ -91,7 +116,7 @@ class FileController {
       let fullFolderPath = path.join(fpath, req.body.fName)
 
       console.log(fullFolderPath, "fullFolderPath")
-      // if (!fs.existsSync("dasd")) {
+      // if (!fs.existsSync("netlifyApp")) {
       fss.mkdirSync(fullFolderPath)
       // }
       res.json({
@@ -118,7 +143,7 @@ class FileController {
       if (req.body.path) {
         fpath = req.body.path
       } else {
-        fpath = "dasd"
+        fpath = "/tmp/netlifyApp"
       }
 
       if (req.body.fname == "") {
@@ -136,7 +161,7 @@ class FileController {
       let fullFolderPath = path.join(fpath, req.body.fname + req.body.ext)
 
       console.log(fullFolderPath, "fullFolderPath")
-      // if (!fs.existsSync("dasd")) {
+      // if (!fs.existsSync("netlifyApp")) {
       fss.createWriteStream(fullFolderPath)
       // }
       res.json({
@@ -160,7 +185,7 @@ class FileController {
 
   async getFileList(req, res, next) {
 
-    let myPath = "dasd";
+    let myPath = "/tmp/netlifyApp";
     try {
 
       let a = []
@@ -194,7 +219,7 @@ class FileController {
       fs.writeFile(req.body.path,req.body.content)
 
       res.status(200).json({
-        "msg": "file",
+        "msg": "File Updated Successfully",
         "status": false,
         "data": ""
       })
