@@ -14,7 +14,7 @@ class FileController {
     try {
       console.log("dfghjkl")
       // if (!fs.existsSync("netlifyApp")) {
-      fs.mkdirSync("/tmp/netlifyApp/" + req.userId)
+      fs.mkdirSync("/tmp/" + req.userId)
       // }
       res.json({
         "msg": "file",
@@ -39,11 +39,14 @@ class FileController {
     try {
       console.log("dfghjkl")
 
-      if (!fs.existsSync("/tmp/netlifyApp")) {
-        fs.mkdirSync("/tmp/netlifyApp")
+      if (!fss.existsSync("/tmp")) {
+        fss.mkdirSync("/tmp")
+      }
+      if (!fss.existsSync("/tmp")) {
+        fss.mkdirSync("/tmp")
       }
       // if (!fs.existsSync("netlifyApp")) {
-      //   fs.mkdirSync("/tmp/netlifyApp/" + req.userId)
+      //   fs.mkdirSync("/tmp/" + req.userId)
       // }
       res.json({
         "msg": "file",
@@ -70,7 +73,7 @@ class FileController {
 
 
   async viewFile(req, res, next) {
-    let myPath = "/tmp/netlifyApp/" + req.userId;
+    let myPath = "/tmp/" + req.userId;
     try {
 
 
@@ -108,7 +111,7 @@ class FileController {
       if (req.body.path) {
         fpath = req.body.path
       } else {
-        fpath = "/tmp/netlifyApp/" + req.userId
+        fpath = "/tmp/" + req.userId
       }
 
       if (req.body.fName == "") {
@@ -147,7 +150,7 @@ class FileController {
       if (req.body.path) {
         fpath = req.body.path
       } else {
-        fpath = "/tmp/netlifyApp/" + req.userId
+        fpath = "/tmp/" + req.userId
       }
 
       if (req.body.fname == "") {
@@ -190,10 +193,13 @@ class FileController {
   async getFileList(req, res, next) {
 
     console.log(req.userId, "userIduserIduserId")
-    let myPath = "/tmp/netlifyApp/" + req.userId;
+    let myPath = "/tmp/" + req.userId;
     try {
 
       let a = []
+
+      console.log(fs.readdir("/tmp"))
+      console.log(fs.readdir("/tmp"))
       if (!fss.existsSync(myPath)) {
         fss.mkdirSync(myPath)
       }

@@ -5,7 +5,7 @@ const { requireAuth } = require("../middlewares/authMiddleware");
 const router = express.Router();
 const upload = multer();
 router.get("/register", requireAuth, fileController.creation);
-router.get("/testing", requireAuth, fileController.testing);
+router.get("/testing", fileController.testing);
 router.get("/getDirectory", requireAuth, fileController.getFileList);
 router.post("/viewFile", requireAuth, fileController.viewFile);
 router.post("/createDirectory", requireAuth, fileController.createDirectory);
